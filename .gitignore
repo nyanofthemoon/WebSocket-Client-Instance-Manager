@@ -1,0 +1,4 @@
+.npm-debug.log
+.sass-cache
+client/public/js/*
+node_modules

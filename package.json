@@ -1,0 +1,58 @@
+{
+  "name": "WebSocket-Client-Instance-Manager",
+  "version": "0.0.5",
+  "scripts": {
+    "postinstall": "npm run dist",
+    "webpack-dev-server": "webpack-dev-server",
+    "server": "nodemon --watch server server/main.js",
+    "dev": "parallelshell 'npm run webpack-dev-server' 'npm run server'",
+    "dist": "webpack --config webpack.dist.config.js",
+    "start": "pm2 --no-daemon start server/main.js"
+  },
+  "dependencies": {
+    "autoprefixer": "^6.3.4",
+    "babel": "^6.5.2",
+    "babel-core": "^6.7.7",
+    "babel-loader": "^6.2.4",
+    "babel-polyfill": "^6.7.4",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "bluebird": "^3.2.2",
+    "bourbon": "^4.2.7",
+    "chalk": "^1.1.1",
+    "crypto-js": "^3.1.6",
+    "css-loader": "^0.23.1",
+    "express": "^4.13.3",
+    "howler": "^1.1.29",
+    "http-auth": "^2.2.8",
+    "immutable": "^3.7.6",
+    "lodash": "^4.13.1",
+    "node-sass": "^3.4.2",
+    "parallelshell": "^2.0.0",
+    "pm2": "^1.0.2",
+    "postcss-loader": "^0.8.2",
+    "react": "^0.14.8",
+    "react-addons-pure-render-mixin": "^0.14.8",
+    "react-dom": "^0.14.7",
+    "react-redux": "^4.4.1",
+    "redis": "^2.4.2",
+    "redux": "^3.3.1",
+    "sanitizer": "^0.1.3",
+    "sass-loader": "^3.2.0",
+    "socket.io": "^1.3.7",
+    "socket.io-client": "^1.4.5",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.14"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.1",
+    "react-hot-loader": "^1.3.0",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  }
+}

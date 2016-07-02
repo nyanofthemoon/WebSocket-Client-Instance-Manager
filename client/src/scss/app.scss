@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+@import 'normalize';
+@import 'theme';
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+h1, h2, h3 {
+  font-family: $title-fontname;
+  font-weight: 400;
+}
+
+/* Helper Classes */
+
+.flex-vertical-container {
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  justify-content: center;
+  height         : 100vh;
+}
+
+.flex-horizontal-container {
+  display        : flex;
+  justify-content: center;
+  width          : 100vw;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.light-text {
+  color: $light-color;
+}
+
+.dark-text {
+  color: $dark-color;
+}
+
+/* Forms */
+
+input, button {
+  margin-left  : 5px;
+  margin-right : 5px;
+  border       : 1px solid $median-color;
+  border-radius: 3px;
+  background   : $light-color;
+  color        : $dark-color;
+  font         : $base-fontsize $base-fontname;
+}
+
+input {
+  padding         : 5px 5px 4px 5px;
+  text-shadow     : 0 1px 0 $light-color;
+  background-color: $light-color;
+}
+
+button {
+  padding    : 4px 15px;
+  font-weight: bold;
+  text-shadow: 0 1px 0 $light-color;
+  &:hover, &:active {
+    color     : $dark-color;
+    background: $median-color;
+  }
+}
+
+/* Disconnected Screen */
+
+h1.title {
+  margin-top : 0;
+  font-size  : 10vmin;
+  text-shadow: 3px 3px $median-color;
+}
+
+h2.title {
+  margin-top : 0;
+  font-size  : 4vmin;
+}
+
+/* Connected Screen */
+
