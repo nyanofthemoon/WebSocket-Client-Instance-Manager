@@ -65,6 +65,17 @@ class User {
     this.socket.to(instanceId).emit('join', this.query());
   }
 
+  canSpeak(instance) {
+    return true;
+  }
+
+  speak(instance, message) {
+    this.socket.to(instance.getId()).emit('speak', {
+      name   : this.getName(),
+      message: message
+    });
+  }
+
   canLeave(instance) {
     return instance.hasUser(this);
   }

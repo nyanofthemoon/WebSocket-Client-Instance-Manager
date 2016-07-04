@@ -20,6 +20,7 @@ const instance = (state = initialState, action) => {
     case types.QUERY_INSTANCE_REQUESTED:
     case types.USER_JOIN_INSTANCE_REQUESTED:
     case types.USER_LEAVE_INSTANCE_REQUESTED:
+    case types.USER_SPEAK_INSTANCE_REQUESTED:
       break
     case types.USER_JOIN_INSTANCE_RECEIVED:
       let dataAdd = fromJS(state).toJS().data
@@ -42,6 +43,9 @@ const instance = (state = initialState, action) => {
         data : action.payload
       })
       break
+    case types.USER_SPEAK_INSTANCE_RECEIVED:
+      // @TODO Implement!
+      break;
     default:
       actionIsInCurrentReducer = false
       break

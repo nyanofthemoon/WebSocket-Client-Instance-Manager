@@ -81,6 +81,27 @@ data = {
 socket.on('query', data)
 ```
 
+### Speak Instance
+###### Request
+```js
+socket.emit('speak', data)
+```
+```json
+data = {
+  "message": "Hello!"
+}
+```
+###### Response
+```js
+socket.on('speak', callback)
+```
+```json
+{
+  "name"  : "Nyan",
+  "message: "Hello!"
+}
+```
+
 ### Leave Instance
 ###### Request
 ```js

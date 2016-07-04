@@ -29,6 +29,13 @@ export function emitUserJoin(id) {
   socket.emit('join', {id: id})
 }
 
+export function emitUserSpeakc(message) {
+  if (Config.environment.isVerbose()) {
+    console.log('[WebSocket] Emit User Speak')
+  }
+  socket.emit('speak', {message: message})
+}
+
 export function emitUserLeave(id) {
   if (Config.environment.isVerbose()) {
     console.log('[WebSocket] Emit User Leave')

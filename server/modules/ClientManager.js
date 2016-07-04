@@ -71,6 +71,9 @@ class ClientManager {
       socket.on('join', function (data) {
         that.join(data, socket);
       });
+      socket.on('speak', function (data) {
+        that.speak(data, socket);
+      });
       socket.on('leave', function (data) {
         that.leave(data, socket);
       });
@@ -102,6 +105,19 @@ class ClientManager {
       }
     } catch (e) {
       this.logger.error('[JOIN] ' + JSON.stringify(data) + ' ' + e);
+    }
+  }
+
+  speak(data, socket) {
+    try {
+      let user           = this.getUserBySocketId(socket.id);
+      let joinedInstance = this.getClientInstance(user.getInstance());
+      if (joinedInstance && user.canSpeak(joinedInstance)) {
+        user.speak(joinedInstance, message);
+      }
+      this.logger.verbose('[SPEAK] ' + data.message);
+    } catch (e) {
+      this.logger.error('[SPEAK] ' + JSON.stringify(info) + ' ' + e);
     }
   }
 

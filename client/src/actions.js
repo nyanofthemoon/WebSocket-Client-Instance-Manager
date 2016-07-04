@@ -57,6 +57,12 @@ function connectSocketSuccess() {
     }
     return joinInstanceReception(data)
   })
+  socket.on('speak', function (data) {
+    if (Config.environment.isVerbose()) {
+      console.log('[WebSocket] Received Speak', data)
+    }
+    return speakInstanceReception(data)
+  })
   socket.on('leave', function (data) {
     if (Config.environment.isVerbose()) {
       console.log('[WebSocket] Received Leave', data)
@@ -119,6 +125,13 @@ function joinInstanceReception(data) {
     console.log('[Action   ] Run ' + types.USER_JOIN_INSTANCE_RECEIVED)
   }
   dispatch({type: types.USER_JOIN_INSTANCE_RECEIVED, payload: data.data})
+}
+
+function speakInstanceReception(data) {
+  if (Config.environment.isVerbose()) {
+    console.log('[Action   ] Run ' + types.USER_SPEAK_INSTANCE_RECEIVED)
+  }
+  dispatch({type: types.USER_SPEAK_INSTANCE_RECEIVED, payload: data.data})
 }
 
 export function leaveInstance(id) {

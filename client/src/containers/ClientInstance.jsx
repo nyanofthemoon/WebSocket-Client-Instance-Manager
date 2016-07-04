@@ -21,12 +21,12 @@ class ClientInstance extends Component {
           </div>)
       case 'joined':
         return (<div className="instance">
-          <h1>Instance: {data.get('id')}</h1>
+          <h1>{data.get('id')}</h1>
           <User/>
           <h2>User List</h2>
           <ul>
             {data.get('users').map(function(user, index) {
-              return (<li>{user.get('name')}</li>)
+              return (<li key={index}>{user.get('name')}</li>)
             })}
           </ul>
         </div>)
