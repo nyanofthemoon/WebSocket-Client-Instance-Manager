@@ -11,8 +11,8 @@ Kind of like a mutant in-between a boilerplate and a framework for building mult
 
 ### Deployment
 
-* `npm run start` start-up script
 * `npm run dist` builds the production distribution package for JS, CSS and other assets
+* `npm run start` start-up script
 
 # Requests And Responses
 
