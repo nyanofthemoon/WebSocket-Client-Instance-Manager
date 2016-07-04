@@ -13,7 +13,7 @@ class ConnectionForm extends Component {
   componentDidMount() {
     if (Config.environment.isDevelopment()) {
       let timestamp = new Date().getTime()
-      this.refs.username.value = 'Player ' + timestamp
+      this.refs.username.value = 'Guest ' + timestamp
     }
   }
 
@@ -24,7 +24,7 @@ class ConnectionForm extends Component {
           <input type="text" ref="username" placeholder="username"/>
         </div>
         <div>
-          <button type="submit">Play</button>
+          <button type="submit">Login</button>
         </div>
       </form>
     );

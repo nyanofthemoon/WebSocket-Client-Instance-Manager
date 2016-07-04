@@ -2,7 +2,7 @@
 
 let CryptoJS = require('crypto-js');
 
-let Logger = require('./logger');
+let Logger = require('./Logger');
 
 const CONFIG = require('./../config');
 
@@ -52,17 +52,17 @@ class User {
     return struct;
   }
 
-  canEnter(instance) {
+  canJoin(instance) {
     return !instance.hasUser(this);
   }
 
-  enter(instance) {
+  join(instance) {
     let instanceId = instance.getId();
     this.socket.join(instanceId);
     this.data.instance = instanceId;
     instance.addUser(this);
     this.socket.emit('query', instance.query());
-    this.socket.to(instanceId).emit('enter', this.query());
+    this.socket.to(instanceId).emit('join', this.query());
   }
 
   canLeave(instance) {

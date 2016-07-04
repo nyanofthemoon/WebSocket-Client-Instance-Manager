@@ -66,10 +66,10 @@ socket.on('query', callback)
 }
 ```
 
-### Enter
+### Join
 ###### Request
 ```js
-socket.emit('enter', data)
+socket.emit('join', data)
 ```
 ```json
 data = {

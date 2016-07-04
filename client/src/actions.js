@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 
 import Store      from './store'
-import {createSocketConnection, emitSocketUserQueryEvent, emitSocketInstanceQueryEvent, emitUserEnter, emitUserLeave} from './helpers/socket'
+import {createSocketConnection, emitSocketUserQueryEvent, emitSocketInstanceQueryEvent, emitUserJoin, emitUserLeave} from './helpers/socket'
 import Config     from './config'
 import * as types from './constants/ActionTypes'
 
@@ -51,17 +51,17 @@ function connectSocketSuccess() {
         return queryUnknownReception(data)
     }
   })
-  socket.on('enter', function (data) {
+  socket.on('join', function (data) {
     if (Config.environment.isVerbose()) {
-      console.log('[WebSocket] Received Enter', data)
+      console.log('[WebSocket] Received Join', data)
     }
-    return enterRegionReception(data)
+    return joinInstanceReception(data)
   })
   socket.on('leave', function (data) {
     if (Config.environment.isVerbose()) {
       console.log('[WebSocket] Received Leave', data)
     }
-    return leaveRegionReception(data)
+    return leaveInstanceReception(data)
   })
   dispatch({type: types.QUERY_USER_REQUESTED})
   emitSocketUserQueryEvent()
@@ -106,19 +106,19 @@ function queryInstanceReception(data) {
   dispatch({type: types.QUERY_INSTANCE_RECEIVED, payload: data.data})
 }
 
-export function enterInstance(id) {
+export function joinInstance(id) {
   if (Config.environment.isVerbose()) {
-    console.log('[Action   ] Run ' + types.USER_ENTER_INSTANCE_REQUESTED)
+    console.log('[Action   ] Run ' + types.USER_JOIN_INSTANCE_REQUESTED)
   }
-  emitUserEnter(id)
-  return {type: types.USER_ENTER_INSTANCE_REQUESTED, payload: {id: id}}
+  emitUserJoin(id)
+  return {type: types.USER_JOIN_INSTANCE_REQUESTED, payload: {id: id}}
 }
 
-function enterInstanceReception(data) {
+function joinInstanceReception(data) {
   if (Config.environment.isVerbose()) {
-    console.log('[Action   ] Run ' + types.USER_ENTER_INSTANCE_RECEIVED)
+    console.log('[Action   ] Run ' + types.USER_JOIN_INSTANCE_RECEIVED)
   }
-  dispatch({type: types.USER_ENTER_INSTANCE_RECEIVED, payload: data.data})
+  dispatch({type: types.USER_JOIN_INSTANCE_RECEIVED, payload: data.data})
 }
 
 export function leaveInstance(id) {

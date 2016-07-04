@@ -10,7 +10,7 @@ import {connectSocket} from './../actions'
 class ClientManager extends Component {
   render() {
     const {manager, actions} = this.props
-    switch (manager.get('status')) {
+    switch (manager.get('state')) {
       default:
       case 'connecting':
       case 'disconnected':

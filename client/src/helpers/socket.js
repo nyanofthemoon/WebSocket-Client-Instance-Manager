@@ -22,11 +22,11 @@ export function emitSocketUserQueryEvent() {
   socket.emit('query', {type: 'user'})
 }
 
-export function emitUserEnter(id) {
+export function emitUserJoin(id) {
   if (Config.environment.isVerbose()) {
-    console.log('[WebSocket] Emit User Enter')
+    console.log('[WebSocket] Emit User Join')
   }
-  socket.emit('enter', {id: id})
+  socket.emit('join', {id: id})
 }
 
 export function emitUserLeave(id) {

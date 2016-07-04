@@ -4,7 +4,7 @@ import Config     from './../config'
 import * as types from './../constants/ActionTypes'
 
 const initialState = fromJS({
-  status: 'disconnected'
+  state: 'disconnected'
 })
 
 const manager = (state = initialState, action) => {
@@ -12,13 +12,13 @@ const manager = (state = initialState, action) => {
   let nextState;
   switch (action.type) {
     case types.CONNECT_SOCKET_REQUESTED:
-      nextState = fromJS(state).set('status', 'connecting')
+      nextState = fromJS(state).set('state', 'connecting')
       break;
     case types.CONNECT_SOCKET_SUCCEEDED:
-      nextState = fromJS(state).set('status', 'connected')
+      nextState = fromJS(state).set('state', 'connected')
       break;
     case types.CONNECT_SOCKET_FAILED:
-      nextState = fromJS(state).set('status', 'disconnected')
+      nextState = fromJS(state).set('state', 'disconnected')
       break;
     case types.WINDOW_RESIZE_EVENT_RECEIVED:
       break

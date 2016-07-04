@@ -5,7 +5,7 @@ class User extends Component {
   render() {
     const {user} = this.props
     let data     = user.get('data')
-    return (<div id="user">User is {data.name}</div>)
+    return (<div id="user">You are {data.name}</div>)
   }
 }
 

@@ -5,24 +5,30 @@ import {connect} from 'react-redux'
 import InstanceJoinForm from './../components/InstanceJoinForm'
 import User             from './../components/User'
 
-import {enterInstance}  from './../actions'
+import {joinInstance}  from './../actions'
 
 class ClientInstance extends Component {
   render() {
     const {instance, actions} = this.props
     let data                  = instance.get('data')
-    switch (instance.get('status')) {
+    switch (instance.get('state')) {
       default:
       case 'unjoined':
         return (<div className="flex-vertical-container light-text">
             <h1 className="title">Client Instance</h1>
             <h2 className="title">Please enter instance name below.</h2>
-            <InstanceJoinForm handleSubmit={actions.enterInstance}/>
+            <InstanceJoinForm handleSubmit={actions.joinInstance}/>
           </div>)
       case 'joined':
         return (<div className="instance">
-          Instance Joined
+          <h1>Instance: {data.get('id')}</h1>
           <User/>
+          <h2>User List</h2>
+          <ul>
+            {data.get('users').map(function(user, index) {
+              return (<li>{user.get('name')}</li>)
+            })}
+          </ul>
         </div>)
     }
   }
@@ -46,7 +52,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({
-      enterInstance
+      joinInstance
     }, dispatch)
   }
 }

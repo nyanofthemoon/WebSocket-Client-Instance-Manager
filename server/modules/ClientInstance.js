@@ -1,6 +1,6 @@
 'use strict';
 
-let Logger = require('./logger')
+let Logger = require('./Logger')
 
 const CLIENT_INSTANCE_STATUS_INIT  = 'initializing'
 const CLIENT_INSTANCE_STATUS_WAIT  = 'waiting'
@@ -52,12 +52,17 @@ class ClientInstance {
   }
 
   query() {
-    var struct = {
+    let that  = this;
+    let users = [];
+    Object.keys(this.data.users).map(function(user, index) {
+      users.push(that.data.users[user].query().data);
+    });
+    let struct = {
       type: 'instance',
       data: {
         id    : this.getId(),
         status: this.getStatus(),
-        users : this.getUsers()
+        users : users
       }
     }
 
@@ -81,7 +86,7 @@ class ClientInstance {
   }
 
   addUser(user) {
-    this.data.users[user.getId()] = true
+    this.data.users[user.getId()] = user
   }
 
 }
