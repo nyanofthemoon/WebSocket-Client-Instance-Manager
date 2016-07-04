@@ -40,7 +40,7 @@ socket.on('query', callback)
 }
 ```
 
-### Query ClientInstance
+### Query Instance
 ###### Request
 ```js
 socket.emit('query', data)
@@ -61,12 +61,12 @@ socket.on('query', callback)
   "data": {
     "id"    : "QWERTY",
     "status": "waiting",
-    "users" : {}
+    "users" : []
   }
 }
 ```
 
-### Join
+### Join Instance
 ###### Request
 ```js
 socket.emit('join', data)
@@ -81,7 +81,7 @@ data = {
 socket.on('query', data)
 ```
 
-### Leave
+### Leave Instance
 ###### Request
 ```js
 socket.emit('leave', data)
